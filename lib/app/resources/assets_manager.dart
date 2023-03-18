@@ -1,4 +1,5 @@
 const String imagePath = "assets/images";
+const String jsonPath = "assets/animations";
 
 class ImageAssets {
   static const String bellIcon = "$imagePath/Bell.svg";
@@ -9,4 +10,12 @@ class ImageAssets {
   static const String searchIcon = "$imagePath/Search.svg";
   static const String starIcon = "$imagePath/Star.svg";
   static const String userIcon = "$imagePath/User.svg";
+  static const String logoWithPopcorn = "$imagePath/logo-with-popcorn.png";
+}
+
+class JsonAssets {
+  static const String loadingSpinner = "$jsonPath/loading.json";
+  static const String error = "$jsonPath/error.json";
+  static const String empty = "$jsonPath/no-data.json";
+  static const String success = "$jsonPath/success.json";
 }

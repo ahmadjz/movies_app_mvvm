@@ -6,6 +6,14 @@ import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData.dark().copyWith(
+    appBarTheme: AppBarTheme(
+        elevation: 0,
+        backgroundColor: ColorManager.darkBackground,
+        centerTitle: true,
+        titleTextStyle: getBlackStyle(
+          color: ColorManager.white,
+          fontSize: FontSize.s20,
+        )),
     primaryColor: ColorManager.primaryColor,
     scaffoldBackgroundColor: ColorManager.darkBackground,
     textTheme: TextTheme(
@@ -104,6 +112,10 @@ ThemeData getApplicationTheme() {
           ),
         ),
       ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.darkBackground,
+      elevation: 1,
     ),
   );
 }

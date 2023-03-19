@@ -29,43 +29,59 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title, style: Theme.of(context).textTheme.titleSmall),
+        title: Text(_title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: pages[_currentIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
-            BoxShadow(color: ColorManager.white, spreadRadius: AppSize.s1)
+            BoxShadow(
+              color: ColorManager.black.withOpacity(0.2),
+              blurRadius: 6,
+              offset: const Offset(0, -1),
+            ),
           ],
         ),
-        child: BottomNavigationBar(
-          selectedItemColor: ColorManager.primaryColor,
-          unselectedItemColor: ColorManager.grey,
-          currentIndex: _currentIndex,
-          onTap: onTap,
-          items: [
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  _currentIndex == 0
-                      ? ImageAssets.homeFilledIcon
-                      : ImageAssets.homeOutlineIcon,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  _currentIndex == 1
-                      ? ImageAssets.desktopFilledIcon
-                      : ImageAssets.desktopOutlineIcon,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  _currentIndex == 2
-                      ? ImageAssets.userFilledIcon
-                      : ImageAssets.userOutlineIcon,
-                ),
-                label: ""),
-          ],
+        child: Container(
+          color: ColorManager.darkBackground,
+          child: Padding(
+            padding: const EdgeInsets.only(top: AppPadding.p8),
+            child: BottomNavigationBar(
+              selectedItemColor: ColorManager.primaryColor,
+              unselectedItemColor: ColorManager.grey,
+              currentIndex: _currentIndex,
+              onTap: onTap,
+              items: [
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      _currentIndex == 0
+                          ? ImageAssets.homeFilledIcon
+                          : ImageAssets.homeOutlineIcon,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      _currentIndex == 1
+                          ? ImageAssets.desktopFilledIcon
+                          : ImageAssets.desktopOutlineIcon,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      _currentIndex == 2
+                          ? ImageAssets.userFilledIcon
+                          : ImageAssets.userOutlineIcon,
+                    ),
+                    label: ""),
+              ],
+            ),
+          ),
         ),
       ),
     );

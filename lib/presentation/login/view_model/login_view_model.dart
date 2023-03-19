@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:movies_app_mvvm/app/functions.dart';
 import 'package:movies_app_mvvm/presentation/base/base_view_model.dart';
 import 'package:movies_app_mvvm/presentation/common/state_renderer/state_renderer_implementer.dart';
@@ -70,7 +71,9 @@ class LoginViewModel extends BaseViewModel
   }
 
   @override
-  login() async {
+  login(BuildContext context) async {
+    FocusScope.of(context).requestFocus(FocusNode());
+    await Future.delayed(const Duration(seconds: 1));
     inputState.add(ContentState());
     isUserLoggedInSuccessfullyStreamController.add(true);
   }
@@ -101,7 +104,7 @@ abstract class LoginViewModelInputs {
 
   void togglePasswordVisibility();
 
-  login();
+  login(BuildContext context);
 
   Sink get inputEmail;
 

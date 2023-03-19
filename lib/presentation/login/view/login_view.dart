@@ -64,9 +64,7 @@ class _LoginViewState extends State<LoginView> {
         return snapshot.data?.getScreenWidget(
               context: context,
               contentScreenWidget: _getContentWidget(),
-              retryActionFunction: () {
-                _loginViewModel.login();
-              },
+              retryActionFunction: () {},
             ) ??
             _getContentWidget();
       },
@@ -200,8 +198,8 @@ class _LoginViewState extends State<LoginView> {
         builder: (context, snapshot) {
           return ElevatedButton(
             onPressed: (snapshot.data ?? false)
-                ? () {
-                    _loginViewModel.login();
+                ? () async {
+                    _loginViewModel.login(context);
                   }
                 : null,
             child: const Text(

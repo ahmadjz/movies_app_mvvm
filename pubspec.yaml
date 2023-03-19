@@ -31,10 +31,16 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.4
+  freezed: ^2.3.2
+  freezed_annotation: ^2.2.0
+  get_it: ^7.2.0
   lottie: ^2.3.0
   rxdart: ^0.27.7
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
+  build_runner: ^2.3.3
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -56,7 +62,8 @@ flutter:
     - assets/images/Home-Outline.svg
     - assets/images/Search.svg
     - assets/images/Star.svg
-    - assets/images/User.svg
+    - assets/images/User-Filled.svg
+    - assets/images/User-Outline.svg
     - assets/images/logo-with-popcorn.png
     - assets/animations/loading.json
     - assets/animations/error.json

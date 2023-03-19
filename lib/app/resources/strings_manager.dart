@@ -12,4 +12,7 @@ class AppStrings {
   static const String retryAgain = "Retry again";
   static const String ok = "Ok";
   static const String success = "Success";
+  static const String emailError = "Please enter a valid email";
+  static const String passwordError =
+      "Password must be at least 8 characters with 1 special character.";
 }

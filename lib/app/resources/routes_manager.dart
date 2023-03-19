@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app_mvvm/app/dependency_injection.dart';
-import 'package:movies_app_mvvm/app/resources/strings_manager.dart';
+import 'package:movies_app_mvvm/presentation/animations/error_animation_view.dart';
 import 'package:movies_app_mvvm/presentation/login/view/login_view.dart';
 import 'package:movies_app_mvvm/presentation/main/main_view.dart';
 import 'package:movies_app_mvvm/presentation/splash/splash_view.dart';
@@ -24,6 +24,7 @@ class RouteGenerator {
           builder: (_) => const LoginView(),
         );
       case Routes.mainRoute:
+        initHomeCategoriesModule();
         return MaterialPageRoute(
           builder: (_) => const MainView(),
         );
@@ -34,12 +35,9 @@ class RouteGenerator {
 
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
-        builder: (_) => const Scaffold(
-              body: Center(
-                child: Text(
-                  AppStrings.noRouteFound,
-                ),
-              ),
-            ));
+      builder: (_) => const Scaffold(
+        body: ErrorAnimationView(),
+      ),
+    );
   }
 }

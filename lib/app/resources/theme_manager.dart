@@ -33,13 +33,17 @@ ThemeData getApplicationTheme() {
         color: ColorManager.white,
         fontSize: FontSize.s16,
       ),
-      bodySmall: getRegularStyle(
-        color: ColorManager.grey,
-        fontSize: FontSize.s14,
+      bodyLarge: getBlackStyle(
+        color: ColorManager.white,
+        fontSize: FontSize.s18,
       ),
       bodyMedium: getRegularStyle(
         color: ColorManager.white,
         fontSize: FontSize.s16,
+      ),
+      bodySmall: getRegularStyle(
+        color: ColorManager.grey,
+        fontSize: FontSize.s14,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -116,6 +120,12 @@ ThemeData getApplicationTheme() {
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: ColorManager.darkBackground,
       elevation: 1,
+    ),
+    cardTheme: CardTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      color: ColorManager.greyBackground,
     ),
   );
 }

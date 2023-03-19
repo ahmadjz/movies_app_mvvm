@@ -15,4 +15,6 @@ class AppStrings {
   static const String emailError = "Please enter a valid email";
   static const String passwordError =
       "Password must be at least 8 characters with 1 special character.";
+  static const String search = "Search";
+  static const String trendingCategories = "Trending Categories";
 }

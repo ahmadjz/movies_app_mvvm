@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:movies_app_mvvm/app/app_preferences.dart';
+import 'package:movies_app_mvvm/app/dependency_injection.dart';
 import 'package:movies_app_mvvm/app/resources/constants_manager.dart';
 import 'package:movies_app_mvvm/app/resources/routes_manager.dart';
 import 'package:movies_app_mvvm/app/resources/strings_manager.dart';
@@ -14,6 +16,7 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   Timer? _timer;
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   _startDelay() {
     _timer = Timer(
@@ -23,7 +26,12 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _goNext() async {
-    Navigator.pushReplacementNamed(context, Routes.loginRoute);
+    _appPreferences.isUserLoggedIn().then((isUserLoggedIn) => {
+          if (isUserLoggedIn)
+            {Navigator.pushReplacementNamed(context, Routes.mainRoute)}
+          else
+            Navigator.pushReplacementNamed(context, Routes.loginRoute)
+        });
   }
 
   @override

@@ -9,7 +9,8 @@ class ImageAssets {
   static const String homeOutlineIcon = "$imagePath/Home-Outline.svg";
   static const String searchIcon = "$imagePath/Search.svg";
   static const String starIcon = "$imagePath/Star.svg";
-  static const String userIcon = "$imagePath/User.svg";
+  static const String userFilledIcon = "$imagePath/User-Filled.svg";
+  static const String userOutlineIcon = "$imagePath/User-Outline.svg";
   static const String logoWithPopcorn = "$imagePath/logo-with-popcorn.png";
 }
 

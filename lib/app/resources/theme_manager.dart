@@ -29,6 +29,10 @@ ThemeData getApplicationTheme() {
         color: ColorManager.grey,
         fontSize: FontSize.s14,
       ),
+      bodyMedium: getRegularStyle(
+        color: ColorManager.white,
+        fontSize: FontSize.s16,
+      ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(

@@ -33,6 +33,25 @@ class _MainViewState extends State<MainView> {
   var _currentIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      int newIndex = _pageController.page!.round();
+      if (newIndex != _currentIndex) {
+        setState(() {
+          _currentIndex = newIndex;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -48,8 +67,6 @@ class _MainViewState extends State<MainView> {
         ),
         body: PageView(
           controller: _pageController,
-          physics:
-              const NeverScrollableScrollPhysics(), // Disable swiping between pages
           children: _navigatorKeys.entries.map((entry) {
             final index = entry.key;
             final navigatorKey = entry.value;

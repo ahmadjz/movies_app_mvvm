@@ -11,7 +11,7 @@ class HomePageCategoriesViewModel extends BaseViewModel
     with HomePageCategoriesViewModelInput, HomePageCategoriesViewModelOutput {
   final _dataStreamController = BehaviorSubject<HomeViewCategoriesObject>();
   final _filteredCategoriesStreamController =
-      BehaviorSubject<HomeViewCategoriesObject>(); // Add this line
+      BehaviorSubject<HomeViewCategoriesObject>();
 
   final HomeCategoriesUseCase _homeCategoriesUseCase;
 
@@ -22,6 +22,13 @@ class HomePageCategoriesViewModel extends BaseViewModel
   @override
   void start() {
     _getHomeData();
+  }
+
+  @override
+  void dispose() {
+    _dataStreamController.close();
+    _filteredCategoriesStreamController.close();
+    super.dispose();
   }
 
   void search(String query) {
@@ -37,8 +44,11 @@ class HomePageCategoriesViewModel extends BaseViewModel
       return _allCategories;
     }
     return _allCategories
-        .where((category) =>
-            category.title.toLowerCase().contains(query.toLowerCase()))
+        .where(
+          (category) => category.title.toLowerCase().contains(
+                query.toLowerCase(),
+              ),
+        )
         .toList();
   }
 
@@ -72,12 +82,6 @@ class HomePageCategoriesViewModel extends BaseViewModel
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _dataStreamController.close();
-    super.dispose();
   }
 
   @override

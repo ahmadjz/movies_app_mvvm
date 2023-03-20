@@ -11,4 +11,7 @@ abstract class AppServiceClient {
 
   @GET("movies_categories.json")
   Future<AllCategoriesResponse> getAllCategories();
+
+  @GET("movies.json")
+  Future<AllMoviesResponse> getAllMovies();
 }

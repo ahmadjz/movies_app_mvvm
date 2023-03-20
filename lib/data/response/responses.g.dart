@@ -31,3 +31,58 @@ Map<String, dynamic> _$AllCategoriesResponseToJson(
     <String, dynamic>{
       'categories': instance.categories,
     };
+
+ActorsResponse _$ActorsResponseFromJson(Map<String, dynamic> json) =>
+    ActorsResponse(
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$ActorsResponseToJson(ActorsResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+MovieResponse _$MovieResponseFromJson(Map<String, dynamic> json) =>
+    MovieResponse(
+      id: json['id'] as int?,
+      categoryId: json['category_id'] as int?,
+      title: json['title'] as String?,
+      summary: json['summary'] as String?,
+      actors: (json['actors'] as List<dynamic>?)
+          ?.map((e) => ActorsResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      director: json['director'] as String?,
+      writers:
+          (json['writers'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      rating: (json['rating'] as num?)?.toDouble(),
+      youtubeVideoId: json['youtube_video_id'] as String?,
+      year: json['year'] as String?,
+    );
+
+Map<String, dynamic> _$MovieResponseToJson(MovieResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'category_id': instance.categoryId,
+      'title': instance.title,
+      'summary': instance.summary,
+      'actors': instance.actors,
+      'director': instance.director,
+      'writers': instance.writers,
+      'rating': instance.rating,
+      'youtube_video_id': instance.youtubeVideoId,
+      'year': instance.year,
+    };
+
+AllMoviesResponse _$AllMoviesResponseFromJson(Map<String, dynamic> json) =>
+    AllMoviesResponse(
+      (json['movies'] as List<dynamic>?)
+          ?.map((e) => MovieResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$AllMoviesResponseToJson(AllMoviesResponse instance) =>
+    <String, dynamic>{
+      'movies': instance.movies,
+    };

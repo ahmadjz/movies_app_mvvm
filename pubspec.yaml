@@ -74,6 +74,8 @@ flutter:
     - assets/images/User-Filled.svg
     - assets/images/User-Outline.svg
     - assets/images/logo-with-popcorn.png
+    - assets/images/movie-placeholder.png
+    - assets/images/movie-error-placeholder.jpg
     - assets/animations/loading.json
     - assets/animations/error.json
     - assets/animations/no-data.json

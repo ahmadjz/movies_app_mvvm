@@ -12,6 +12,9 @@ class ImageAssets {
   static const String userFilledIcon = "$imagePath/User-Filled.svg";
   static const String userOutlineIcon = "$imagePath/User-Outline.svg";
   static const String logoWithPopcorn = "$imagePath/logo-with-popcorn.png";
+  static const String moviePlaceholder = "$imagePath/movie-placeholder.png";
+  static const String movieErrorPlaceholder =
+      "$imagePath/movie-error-placeholder.jpg";
 }
 
 class JsonAssets {

@@ -9,5 +9,6 @@ class ColorManager {
   static Color grey = const Color(0xff8d8ba7);
   static Color textGrey = const Color(0xff8391a1);
   static Color primaryColor = const Color(0xffb0413d);
+  static Color lightPrimaryColor = const Color(0xffff9693);
   static Color error = const Color(0xffe61f34); // red color
 }

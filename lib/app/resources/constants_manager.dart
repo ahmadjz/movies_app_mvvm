@@ -3,5 +3,6 @@ class AppConstants {
   static const String baseUrl = "https://darsoft.b-cdn.net/";
   static const String empty = "";
   static const int zero = 0;
+  static const double zeroDouble = 0.0;
   static const int apiTimeOut = 60000;
 }

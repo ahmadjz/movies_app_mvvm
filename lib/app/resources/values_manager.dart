@@ -46,3 +46,7 @@ class AppSize {
   static const double s160 = 160.0;
   static const double s190 = 190.0;
 }
+
+class PercentageSizes {
+  static const double p30 = 30 / 100;
+}

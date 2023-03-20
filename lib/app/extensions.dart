@@ -19,3 +19,13 @@ extension NonNullInteger on int? {
     }
   }
 }
+
+extension NonNullDouble on double? {
+  double orZero() {
+    if (this == null) {
+      return AppConstants.zeroDouble;
+    } else {
+      return this!;
+    }
+  }
+}

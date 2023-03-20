@@ -35,8 +35,9 @@ class RouteGenerator {
 
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
-      builder: (_) => const Scaffold(
-        body: ErrorAnimationView(),
+      builder: (_) => Scaffold(
+        appBar: AppBar(),
+        body: const Center(child: ErrorAnimationView()),
       ),
     );
   }

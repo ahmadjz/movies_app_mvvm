@@ -9,8 +9,10 @@ import 'package:movies_app_mvvm/data/network/network_info.dart';
 import 'package:movies_app_mvvm/data/repository/repository_implementer.dart';
 import 'package:movies_app_mvvm/domain/repository/repository.dart';
 import 'package:movies_app_mvvm/domain/use_cases/home_categories_use_case.dart';
+import 'package:movies_app_mvvm/domain/use_cases/home_movies_use_case.dart';
 import 'package:movies_app_mvvm/presentation/login/view_model/login_view_model.dart';
 import 'package:movies_app_mvvm/presentation/main/pages/home/categories/view_model/home_page_categories_view_model.dart';
+import 'package:movies_app_mvvm/presentation/main/pages/home/movies/view_model/home_page_movies_view_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final instance = GetIt.instance;
@@ -75,6 +77,21 @@ initHomeCategoriesModule() {
     instance.registerFactory<HomePageCategoriesViewModel>(
       () => HomePageCategoriesViewModel(
         instance<HomeCategoriesUseCase>(),
+      ),
+    );
+  }
+}
+
+initHomeMoviesModule() {
+  if (!GetIt.I.isRegistered<HomeMoviesUseCase>()) {
+    instance.registerFactory<HomeMoviesUseCase>(
+      () => HomeMoviesUseCase(
+        instance<Repository>(),
+      ),
+    );
+    instance.registerFactory<HomePageMoviesViewModel>(
+      () => HomePageMoviesViewModel(
+        instance<HomeMoviesUseCase>(),
       ),
     );
   }

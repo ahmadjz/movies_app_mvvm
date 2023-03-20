@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movies_app_mvvm/app/app_preferences.dart';
+import 'package:movies_app_mvvm/data/data_source/local_data_source.dart';
 import 'package:movies_app_mvvm/data/data_source/remote_data_source.dart';
 import 'package:movies_app_mvvm/data/network/app_api.dart';
 import 'package:movies_app_mvvm/data/network/dio_factory.dart';
@@ -51,10 +52,17 @@ Future<void> initAppModule() async {
     ),
   );
 
+  instance.registerLazySingleton<LocalDataSource>(
+    () => LocalDataSourceImplementer(
+      appPreferences: instance<AppPreferences>(),
+    ),
+  );
+
   instance.registerLazySingleton<Repository>(
     () => RepositoryImplementer(
       networkInfo: instance<NetworkInfo>(),
       remoteDataSource: instance<RemoteDataSource>(),
+      localDataSource: instance<LocalDataSource>(),
     ),
   );
 }

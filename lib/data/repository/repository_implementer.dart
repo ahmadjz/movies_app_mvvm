@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:movies_app_mvvm/data/data_source/local_data_source.dart';
 import 'package:movies_app_mvvm/data/data_source/remote_data_source.dart';
 import 'package:movies_app_mvvm/data/mapper/categories_mapper.dart';
 import 'package:movies_app_mvvm/data/mapper/movies_mapper.dart';
@@ -11,22 +12,24 @@ import 'package:movies_app_mvvm/domain/repository/repository.dart';
 
 class RepositoryImplementer implements Repository {
   final RemoteDataSource remoteDataSource;
+  final LocalDataSource localDataSource;
   final NetworkInfo networkInfo;
   RepositoryImplementer({
     required this.remoteDataSource,
     required this.networkInfo,
+    required this.localDataSource,
   });
 
   @override
   Future<Either<Failure, AllCategoriesObject>> getAllCategoriesData() async {
     try {
-      //TODO: implement getting data from cache here
-      throw Failure(code: 0, message: "Caching failed");
+      final response = await localDataSource.getAllCategoriesFromCache();
+      return Right(response.toDomain());
     } catch (cacheError) {
       if (await networkInfo.isConnected) {
         try {
           final response = await remoteDataSource.getAllCategories();
-          //TODO: implement save data to cache here
+          localDataSource.saveAllCategoriesToCache(response);
           return Right(response.toDomain());
         } catch (error) {
           return Left(ErrorHandler.handle(error).failure);
@@ -41,19 +44,24 @@ class RepositoryImplementer implements Repository {
   Future<Either<Failure, AllMoviesObject>> getMoviesByCategoryId(
       int categoryId) async {
     try {
-      //TODO: implement getting data from cache here
-      throw Failure(code: 0, message: "Caching failed");
+      final response = await localDataSource.getAllMoviesFromCache();
+      return Right(
+        _filterMoviesByCategory(
+          allMoviesObject: response.toDomain(),
+          categoryId: categoryId,
+        ),
+      );
     } catch (cacheError) {
       if (await networkInfo.isConnected) {
         try {
           final response = await remoteDataSource.getAllMovies();
-          //TODO: implement save data to cache here
-
-          final allMoviesObject = response.toDomain();
-          final categoryMovies = allMoviesObject.movies
-              .where((movie) => movie.categoryId == categoryId)
-              .toList();
-          return Right(AllMoviesObject(movies: categoryMovies));
+          localDataSource.saveAllMoviesToCache(response);
+          return Right(
+            _filterMoviesByCategory(
+              allMoviesObject: response.toDomain(),
+              categoryId: categoryId,
+            ),
+          );
         } catch (error) {
           return Left(ErrorHandler.handle(error).failure);
         }
@@ -61,5 +69,16 @@ class RepositoryImplementer implements Repository {
         return Left(DataSource.noInternetConnection.getFailure());
       }
     }
+  }
+
+  AllMoviesObject _filterMoviesByCategory({
+    required AllMoviesObject allMoviesObject,
+    required int categoryId,
+  }) {
+    return AllMoviesObject(
+      movies: allMoviesObject.movies
+          .where((movie) => movie.categoryId == categoryId)
+          .toList(),
+    );
   }
 }

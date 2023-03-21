@@ -8,7 +8,8 @@ import 'package:movies_app_mvvm/app/resources/strings_manager.dart';
 import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 import 'package:movies_app_mvvm/domain/model/all_movies_model.dart';
 import 'package:movies_app_mvvm/presentation/main/pages/home/movie/view/widgets/actors_list_builder.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:movies_app_mvvm/presentation/main/pages/home/movie/view/widgets/movie_data.dart';
+import 'package:movies_app_mvvm/presentation/main/pages/home/movie/view/widgets/youtube_thumbnail_image.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   final MovieObject movie;
@@ -24,33 +25,7 @@ class MovieDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () async {
-                  final url = Uri.parse(
-                    youtubeUrl(
-                      movie.youtubeVideoId,
-                    ),
-                  );
-                  await launchUrl(url);
-                },
-                child: Container(
-                  height:
-                      MediaQuery.of(context).size.height * PercentageSizes.p20,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      AppSize.s16,
-                    ),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        youtubeThumbnailUrl(
-                          movie.youtubeVideoId,
-                        ),
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+              YoutubeThumbnailImage(youtubeVideoId: movie.youtubeVideoId),
               const SizedBox(height: AppSize.s16),
               Row(
                 children: [
@@ -177,53 +152,7 @@ class MovieDetailsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      AppStrings.summary,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const SizedBox(height: AppSize.s10),
-                    Text(
-                      movie.summary,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: ColorManager.white,
-                          ),
-                    ),
-                    const SizedBox(height: AppSize.s16),
-                    RichText(
-                      text: TextSpan(
-                        text: AppStrings.directors,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: ColorManager.grey,
-                            ),
-                        children: [
-                          TextSpan(
-                            text: movie.director,
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
-                                      color: ColorManager.grey,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: AppSize.s8),
-                    RichText(
-                      text: TextSpan(
-                        text: AppStrings.writers,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: ColorManager.grey,
-                            ),
-                        children: [
-                          TextSpan(
-                            text: movie.writers.join(' - '),
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
-                                      color: ColorManager.grey,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    MovieData(movie: movie),
                     const SizedBox(height: AppSize.s16),
                     Text(
                       AppStrings.cast,

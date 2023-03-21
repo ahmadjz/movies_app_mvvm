@@ -6,8 +6,8 @@ import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 import 'package:movies_app_mvvm/domain/model/all_categories_model.dart';
 import 'package:movies_app_mvvm/presentation/animations/loading_animation_view.dart';
 import 'package:movies_app_mvvm/presentation/animations/no_data_animation_view.dart';
+import 'package:movies_app_mvvm/presentation/common/movies_list_builder.dart';
 import 'package:movies_app_mvvm/presentation/common/state_renderer/state_renderer_implementer.dart';
-import 'package:movies_app_mvvm/presentation/main/pages/home/movies/view/widgets/movies_list_builder.dart';
 import 'package:movies_app_mvvm/presentation/main/pages/home/movies/view_model/home_page_movies_view_model.dart';
 
 class HomePageMoviesView extends StatefulWidget {
@@ -49,7 +49,7 @@ class _HomePageMoviesViewState extends State<HomePageMoviesView> {
                   _homePageMoviesViewModel.start();
                 },
               ) ??
-              _getContentWidget();
+              const LoadingAnimationView();
         },
       ),
     );

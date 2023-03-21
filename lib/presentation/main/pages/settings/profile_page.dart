@@ -6,14 +6,18 @@ import 'package:movies_app_mvvm/app/resources/routes_manager.dart';
 import 'package:movies_app_mvvm/app/resources/strings_manager.dart';
 import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({
+    super.key,
+    required this.menuContext,
+  });
+  final BuildContext menuContext;
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _ProfilePageState extends State<ProfilePage> {
   final AppPreferences _appPreferences = instance<AppPreferences>();
 
   @override
@@ -44,6 +48,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
   _logout() {
     _appPreferences.logout();
-    Navigator.pushReplacementNamed(context, Routes.loginRoute);
+    _appPreferences.removeWatchListData();
+    Navigator.pushReplacementNamed(
+      widget.menuContext,
+      Routes.loginRoute,
+    );
   }
 }

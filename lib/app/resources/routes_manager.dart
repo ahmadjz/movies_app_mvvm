@@ -25,6 +25,7 @@ class RouteGenerator {
         );
       case Routes.mainRoute:
         initHomeCategoriesModule();
+        initWatchLaterMoviesModule();
         return MaterialPageRoute(
           builder: (_) => const MainView(),
         );

@@ -45,7 +45,7 @@ class _HomePageCategoriesViewState extends State<HomePageCategoriesView> {
                   _homePageCategoriesViewModel.start();
                 },
               ) ??
-              _getContentWidget();
+              const LoadingAnimationView();
         },
       ),
     );

@@ -8,4 +8,7 @@ abstract class Repository {
   Future<Either<Failure, AllCategoriesObject>> getAllCategoriesData();
   Future<Either<Failure, AllMoviesObject>> getMoviesByCategoryId(
       int categoryId);
+  Future<Either<Failure, AllMoviesObject>> getWatchList();
+  Future<Either<Failure, void>> addToWatchList(MovieObject movie);
+  Future<Either<Failure, void>> removeFromWatchList(int movieId);
 }

@@ -18,8 +18,10 @@ class AppStrings {
   static const String search = "Search";
   static const String trendingCategories = "Trending Categories";
   static const String addToWatchList = "Add To Watch list";
+  static const String removeFromWatchList = "Remove From WatchList";
   static const String summary = "Summary";
   static const String directors = "Director: ";
   static const String writers = "Writers: ";
   static const String cast = "Cast";
+  static const String watchList = "WatchList";
 }

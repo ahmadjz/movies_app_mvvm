@@ -1,26 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies_app_mvvm/app/dependency_injection.dart';
 import 'package:movies_app_mvvm/app/functions.dart';
 import 'package:movies_app_mvvm/app/resources/assets_manager.dart';
 import 'package:movies_app_mvvm/app/resources/color_manager.dart';
 import 'package:movies_app_mvvm/app/resources/font_manager.dart';
 import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 import 'package:movies_app_mvvm/domain/model/all_movies_model.dart';
-import 'package:movies_app_mvvm/presentation/main/pages/home/movie/view/movie_details_page_view.dart';
+import 'package:movies_app_mvvm/presentation/common/movie/view/movie_details_page_view.dart';
 
 class MovieItemWidget extends StatelessWidget {
-  const MovieItemWidget({super.key, required this.movie});
+  const MovieItemWidget({
+    super.key,
+    required this.movie,
+    this.function,
+  });
   final MovieObject movie;
+  final Function? function;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context, rootNavigator: false).push(
+        initWatchLaterMovieDetailsModule();
+        Navigator.of(context, rootNavigator: false)
+            .push(
           MaterialPageRoute(
             builder: (context) => MovieDetailsPage(movie: movie),
           ),
-        );
+        )
+            .then((value) {
+          if (function != null) {
+            function!();
+          }
+        });
       },
       child: Row(
         children: [

@@ -32,13 +32,13 @@ Map<String, dynamic> _$AllCategoriesResponseToJson(
       'categories': instance.categories,
     };
 
-ActorResponse _$ActorsResponseFromJson(Map<String, dynamic> json) =>
+ActorResponse _$ActorResponseFromJson(Map<String, dynamic> json) =>
     ActorResponse(
       id: json['id'] as int?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$ActorsResponseToJson(ActorResponse instance) =>
+Map<String, dynamic> _$ActorResponseToJson(ActorResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

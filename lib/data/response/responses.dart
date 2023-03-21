@@ -46,10 +46,10 @@ class ActorResponse {
     this.name,
   });
 
-  Map<String, dynamic> toJson() => _$ActorsResponseToJson(this);
+  Map<String, dynamic> toJson() => _$ActorResponseToJson(this);
 
   factory ActorResponse.fromJson(Map<String, dynamic> json) =>
-      _$ActorsResponseFromJson(json);
+      _$ActorResponseFromJson(json);
 }
 
 @JsonSerializable()

@@ -5,7 +5,7 @@ import 'package:movies_app_mvvm/app/resources/color_manager.dart';
 import 'package:movies_app_mvvm/app/resources/strings_manager.dart';
 import 'package:movies_app_mvvm/app/resources/values_manager.dart';
 import 'package:movies_app_mvvm/presentation/main/pages/home/categories/view/home_page_categories_view.dart';
-import 'package:movies_app_mvvm/presentation/main/pages/settings/settings_page.dart';
+import 'package:movies_app_mvvm/presentation/main/pages/settings/profile_page.dart';
 import 'package:movies_app_mvvm/presentation/main/pages/watch_list/view/watch_list_page_view.dart';
 
 class MainView extends StatefulWidget {
@@ -22,12 +22,6 @@ class _MainViewState extends State<MainView> {
     2: GlobalKey<NavigatorState>(),
   };
   final _pageController = PageController();
-
-  List<Widget> pages = [
-    const HomePageCategoriesView(),
-    const WatchListPageView(),
-    const SettingsPage(),
-  ];
 
   final _title = AppStrings.moviesStore;
   var _currentIndex = 0;
@@ -53,7 +47,11 @@ class _MainViewState extends State<MainView> {
           children: _navigatorKeys.entries.map((entry) {
             final index = entry.key;
             final navigatorKey = entry.value;
-            final page = pages[index];
+            final page = [
+              const HomePageCategoriesView(),
+              const WatchListPageView(),
+              ProfilePage(menuContext: context),
+            ][index];
             return Navigator(
               key: navigatorKey,
               onGenerateRoute: (settings) {

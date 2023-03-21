@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dartz/dartz.dart';
 import 'package:movies_app_mvvm/data/data_source/local_data_source.dart';
 import 'package:movies_app_mvvm/data/data_source/remote_data_source.dart';
@@ -80,5 +82,43 @@ class RepositoryImplementer implements Repository {
           .where((movie) => movie.categoryId == categoryId)
           .toList(),
     );
+  }
+
+  @override
+  Future<Either<Failure, AllMoviesObject>> getWatchList() async {
+    try {
+      final response = await localDataSource.getWatchList();
+      return Right(
+        AllMoviesObject(movies: response),
+      );
+    } catch (error) {
+      return Left(
+        ErrorHandler.handle(error).failure,
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> addToWatchList(MovieObject movie) async {
+    try {
+      await localDataSource.addToWatchList(movie);
+      return const Right(Void);
+    } catch (error) {
+      return Left(
+        ErrorHandler.handle(error).failure,
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> removeFromWatchList(int movieId) async {
+    try {
+      await localDataSource.removeFromWatchList(movieId);
+      return const Right(Void);
+    } catch (error) {
+      return Left(
+        ErrorHandler.handle(error).failure,
+      );
+    }
   }
 }

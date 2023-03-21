@@ -10,7 +10,7 @@ class ActorsListBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.s120,
+      height: AppSize.s160,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: actors.length,

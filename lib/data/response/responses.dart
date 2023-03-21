@@ -35,20 +35,20 @@ class AllCategoriesResponse {
 }
 
 @JsonSerializable()
-class ActorsResponse {
+class ActorResponse {
   @JsonKey(name: 'id')
   int? id;
   @JsonKey(name: 'name')
   String? name;
 
-  ActorsResponse({
+  ActorResponse({
     this.id,
     this.name,
   });
 
   Map<String, dynamic> toJson() => _$ActorsResponseToJson(this);
 
-  factory ActorsResponse.fromJson(Map<String, dynamic> json) =>
+  factory ActorResponse.fromJson(Map<String, dynamic> json) =>
       _$ActorsResponseFromJson(json);
 }
 
@@ -67,7 +67,7 @@ class MovieResponse {
   String? summary;
 
   @JsonKey(name: 'actors')
-  List<ActorsResponse>? actors;
+  List<ActorResponse>? actors;
 
   @JsonKey(name: 'director')
   String? director;

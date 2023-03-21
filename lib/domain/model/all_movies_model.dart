@@ -1,8 +1,8 @@
-class ActorsObject {
+class ActorObject {
   final int id;
   final String name;
 
-  ActorsObject({
+  ActorObject({
     required this.id,
     required this.name,
   });
@@ -13,7 +13,7 @@ class MovieObject {
   final int categoryId;
   final String title;
   final String summary;
-  final List<ActorsObject> actors;
+  final List<ActorObject> actors;
   final String director;
   final List<String> writers;
   final double rating;

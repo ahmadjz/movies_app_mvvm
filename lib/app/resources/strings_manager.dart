@@ -17,4 +17,9 @@ class AppStrings {
       "Password must be at least 8 characters with 1 special character.";
   static const String search = "Search";
   static const String trendingCategories = "Trending Categories";
+  static const String addToWatchList = "Add To Watch list";
+  static const String summary = "Summary";
+  static const String directors = "Director: ";
+  static const String writers = "Writers: ";
+  static const String cast = "Cast";
 }

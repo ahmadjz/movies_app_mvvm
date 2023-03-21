@@ -46,6 +46,7 @@ dependencies:
   retrofit: ^3.0.1+1
   rxdart: ^0.27.7
   shared_preferences: ^2.0.18
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   build_runner: ^2.1.7
@@ -75,6 +76,7 @@ flutter:
     - assets/images/User-Outline.svg
     - assets/images/logo-with-popcorn.png
     - assets/images/movie-placeholder.png
+    - assets/images/person-placeholder.jpg
     - assets/images/movie-error-placeholder.jpg
     - assets/animations/loading.json
     - assets/animations/error.json

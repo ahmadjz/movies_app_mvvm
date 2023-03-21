@@ -15,6 +15,7 @@ class ImageAssets {
   static const String moviePlaceholder = "$imagePath/movie-placeholder.png";
   static const String movieErrorPlaceholder =
       "$imagePath/movie-error-placeholder.jpg";
+  static const String personPlaceholder = "$imagePath/person-placeholder.jpg";
 }
 
 class JsonAssets {

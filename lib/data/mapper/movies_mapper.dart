@@ -3,9 +3,9 @@ import 'package:movies_app_mvvm/app/resources/constants_manager.dart';
 import 'package:movies_app_mvvm/data/response/responses.dart';
 import 'package:movies_app_mvvm/domain/model/all_movies_model.dart';
 
-extension ActorsMapper on ActorsResponse? {
-  ActorsObject toDomain() {
-    return ActorsObject(
+extension ActorsMapper on ActorResponse? {
+  ActorObject toDomain() {
+    return ActorObject(
       id: this?.id.orZero() ?? AppConstants.zero,
       name: this?.name.orEmpty() ?? AppConstants.empty,
     );
@@ -14,10 +14,10 @@ extension ActorsMapper on ActorsResponse? {
 
 extension MovieMapper on MovieResponse? {
   MovieObject toDomain() {
-    List<ActorsObject> actors =
+    List<ActorObject> actors =
         (this?.actors?.map((actor) => actor.toDomain()) ??
                 const Iterable.empty())
-            .cast<ActorsObject>()
+            .cast<ActorObject>()
             .toList();
 
     return MovieObject(

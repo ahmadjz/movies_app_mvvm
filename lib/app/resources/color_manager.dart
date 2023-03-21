@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ColorManager {
   static Color darkBackground = const Color(0xff292a32);
   static Color greyBackground = const Color(0xffD9D9D9);
+  static Color greyCard = const Color(0xff3D3F48);
   static Color white = const Color(0xffffffff);
   static Color black = const Color(0xff000000);
   static Color whiteBorder = const Color(0xffE8ECF4);

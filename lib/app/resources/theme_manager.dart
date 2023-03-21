@@ -39,7 +39,7 @@ ThemeData getApplicationTheme() {
       ),
       labelSmall: getRegularStyle(
         color: ColorManager.white,
-        fontSize: FontSize.s16,
+        fontSize: FontSize.s10,
       ),
       bodyLarge: getBlackStyle(
         color: ColorManager.white,

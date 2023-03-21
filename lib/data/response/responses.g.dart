@@ -32,13 +32,13 @@ Map<String, dynamic> _$AllCategoriesResponseToJson(
       'categories': instance.categories,
     };
 
-ActorsResponse _$ActorsResponseFromJson(Map<String, dynamic> json) =>
-    ActorsResponse(
+ActorResponse _$ActorsResponseFromJson(Map<String, dynamic> json) =>
+    ActorResponse(
       id: json['id'] as int?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$ActorsResponseToJson(ActorsResponse instance) =>
+Map<String, dynamic> _$ActorsResponseToJson(ActorResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -51,7 +51,7 @@ MovieResponse _$MovieResponseFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       summary: json['summary'] as String?,
       actors: (json['actors'] as List<dynamic>?)
-          ?.map((e) => ActorsResponse.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ActorResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       director: json['director'] as String?,
       writers:

@@ -159,7 +159,7 @@ class _LoginViewState extends State<LoginView> {
                   hintText: AppStrings.enterEmail,
                   errorText:
                       (snapshot.data ?? true) ? null : AppStrings.emailError),
-              style: Theme.of(context).textTheme.labelSmall,
+              style: Theme.of(context).textTheme.bodyMedium,
             );
           },
         ),
@@ -173,7 +173,7 @@ class _LoginViewState extends State<LoginView> {
                 return TextFormField(
                   obscureText: snapshotObscureText.data ?? true,
                   controller: _passwordController,
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
                         icon: Icon(snapshotObscureText.data ?? true
